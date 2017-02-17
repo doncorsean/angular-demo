@@ -6,3 +6,6 @@ npm install
 ```
 gulp buildDynamic
 ```
+```
+http-server
+```
