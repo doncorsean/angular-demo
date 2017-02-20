@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <title>Y u no work?</title>
 
-    <!-- For dynamic loading-->
+    <!--For dynamic loading-->
     <script src="assets/scripts/lib/core-js/client/shim.min.js"></script>
     <script src="assets/scripts/lib/zone.js/dist/zone.js"></script>
     <script src="assets/scripts/lib/reflect-metadata/Reflect.js"></script>
     <script src="assets/scripts/lib/systemjs/dist/system.src.js"></script>
     <script src="assets/scripts/system.config.dynamic.js"></script>
+
     <script>
         System.import("app").then(
-                function handleResolve() { console.info( "System.js successfully bootstrapped app." ); },
-                function handleReject( error ) { console.error( error ); }
+            function handleResolve() { console.info( "System.js successfully bootstrapped app." ); },
+            function handleReject( error ) { console.error( error ); }
         );
     </script>
-
 
     <!-- Static loading-->
     <!--<script src="assets/scripts/lib/vendor.min.js"></script>-->
     <!--<script src="assets/scripts/app.min.js"></script>-->
+
 </head>
 <body style="text-align: center">
-    <app><div style="margin-top: 100px">I can haz decorator?<span style="color: red"> NO!!!!</span></div></app>
+<app><div style="margin-top: 100px">I can haz decorator?<span style="color: red"> NO!!!!</span></div></app>
 </body>
 </html>

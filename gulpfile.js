@@ -79,14 +79,18 @@ gulp.task('copy:scripts:lib', function() {
 });
 
 gulp.task('compile:ts', function () {
+    // var reporter = ts.reporter.fullReporter();
     var tsProject = ts.createProject('tsconfig.json', { typescript: require('typescript') });
+
     var tsResult = tsProject.src().pipe(sourceMaps.init()).pipe(tsProject());
+
     return tsResult.js.pipe(sourceMaps.write()).pipe(gulp.dest(scriptsDir));
 });
 
 gulp.task('bundle:app', function() {
     // map sysBuilder path to our compiled scripts dir. Paths inside system.config.js begin from here.
     var builder = new sysBuilder(scriptsDir, scriptsDir + '/system.config.js');
+    // var builder = new sysBuilder(scriptsDir, scriptsDir + '/system.config.dynamic.js');
     return builder.buildStatic('app', scriptsDir + '/app.min.js',  {minify: false, encodeNames:false })
         // .then(function () {
         //     return del([scriptsDir + '/app']);
@@ -148,6 +152,12 @@ gulp.task('buildDynamic', function(callback) {
     );
 });
 
+gulp.task('build-all', function(callback) {
+    runSequence(
+        'buildDynamic',
+        'build',
+        callback);
+});
 gulp.task('default', function(callback) {
     runSequence('build', callback);
 });
